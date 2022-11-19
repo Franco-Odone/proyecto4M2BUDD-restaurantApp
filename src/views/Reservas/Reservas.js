@@ -1,4 +1,4 @@
-import "../style/reservas.css"
+import "./reservas.css"
 
 const Reservas = () => {
   return (

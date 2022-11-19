@@ -13,11 +13,24 @@ const Header = () => {
 
   return (
     <header>
-      <h2>Restaurant <i className="fa-solid fa-utensils"></i></h2>
+      <h2>
+        <Link to={"/"} className="restaurant">
+          Restaurant <i className="fa-solid fa-utensils"></i>
+        </Link>
+      </h2>
       <nav ref={navRef}>
-        <Link to={"/"}>Home</Link>
-        <Link to={"/menu"}>Menú</Link>
-        <Link to={"/reservas"}>Reservas</Link>
+        <Link to={"/"} onClick={mostrarNavBar}>
+          Home
+        </Link>
+        <Link to={"/menu"} onClick={mostrarNavBar}>
+          Menú
+        </Link>
+        <Link to={"/reservas"} onClick={mostrarNavBar}>
+          Reservas
+        </Link>
+        <Link to={"/contacto"} onClick={mostrarNavBar}>
+          Contácto
+        </Link>
         <button className="nav-btn nav-close-btn" onClick={mostrarNavBar}>
           <FaTimes />
         </button>

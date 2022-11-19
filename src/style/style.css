@@ -36,6 +36,16 @@ header {
     color: var(--textColor);
 }
 
+.restaurant {
+    color: var(--textColor);
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
 nav a {
     margin: 0 1rem;
     color: var(--textColor);
@@ -58,12 +68,6 @@ header .nav-btn {
     opacity: 0;
     font-size: 1.8rem;
     min-width: fit-content;
-}
-
-header div,
-nav {
-    display: flex;
-    align-items: center;
 }
 
 /* Hasta los 1024px */
@@ -143,7 +147,6 @@ footer>.footer__div>.footer__div-div {
 footer>.footer__div>.footer__div-div h3 {
     color: var(--textColor);
     text-align: left;
-    /* font-size: 1.5rem;    */
 }
 
 footer>.footer__div>.footer__div-div ul {
@@ -194,7 +197,6 @@ footer>.footer__div>.footer__div-div>.redes a:hover {
 
     footer>.footer__div>.footer__div-div h3 {
         text-align: center;
-        /* font-size: 1.8rem; */
     }
 
     footer>.footer__div>.footer__div-div ul li {

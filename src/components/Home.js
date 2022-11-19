@@ -1,6 +1,6 @@
 import "../style/style.css";
 
-const Main = () => {
+const Home = () => {
   return (
     <main>
       <h1>Home</h1>
@@ -8,4 +8,4 @@ const Main = () => {
   );
 };
 
-export { Main };
+export { Home };
