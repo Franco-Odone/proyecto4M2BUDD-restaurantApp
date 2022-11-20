@@ -2,10 +2,10 @@ import { Route, Routes } from "react-router-dom";
 
 import { Header } from "./components/Header";
 import { Home } from "./components/Home";
-import { Footer } from "./components/Footer";
 import { Menu } from "./views/Menú/Menu";
 import { Reservas } from "./views/Reservas/Reservas";
 import { Contacto } from "./views/Contácto/Contacto";
+import { Footer } from "./components/Footer";
 import "./style/style.css";
 
 function App() {
