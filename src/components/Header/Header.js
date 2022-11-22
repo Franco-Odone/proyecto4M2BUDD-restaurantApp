@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { MdRestaurant } from "react-icons/md";
 
-import "../style/style.css";
+import "./header.css";
 
 const Header = () => {
   const navRef = useRef();
@@ -15,7 +16,7 @@ const Header = () => {
     <header>
       <h2>
         <Link to={"/"} className="restaurant">
-          Restaurant <i className="fa-solid fa-utensils"></i>
+          Restaurante Italiano <MdRestaurant />
         </Link>
       </h2>
       <nav ref={navRef}>

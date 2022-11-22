@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Titillium Web", sans-serif;
+}
+
+:root {
+    --mainColor: #29335c;
+    --mainColorLight: #5767aa;
+    --secondaryColor: #db2b39;
+    --textColor: #eee;
+}
+
+/* Main */
+
+.home {
+    flex: 1;
+    min-width: fit-content;
+    margin: 10px;
+    text-align: center;
+}
+
+/* Jumbotron */
+
+.jumbotron {
+    box-sizing: border-box;
+    height: 100vh;
+    display: grid;
+    grid-template-areas:
+        "a a d d"
+        "b b d d"
+        "c c d d";
+}
+
+.jumbotron>.titulo {
+    grid-area: a;
+    margin: 50px 0 0 0;
+    padding: 0;
+}
+
+.jumbotron>.titulo>h1 {
+    color: var(--mainColor);
+    font-size: 3rem;
+}
+
+.jumbotron>.p1 {
+    grid-area: b;
+}
+
+.jumbotron>.p2 {
+    grid-area: c;
+}
+
+.jumbotron>.p1,
+.p2 {
+    color: var(--mainColorLight);
+    font-size: 1.4rem;
+    margin: 0 15px;
+    text-align: justify;
+    align-self: flex-start;
+}
+
+.jumbotron>img {
+    grid-area: d;
+    border: 2px solid var(--mainColor);
+    border-radius: 15px;
+    object-fit: cover;
+    height: 95%;
+    width: 95%;
+    margin: auto;
+}
+
+/* Jumbotron responsive */
+
+@media only screen and (max-width: 1024px) {
+    .jumbotron {
+        padding: 0;
+        grid-template-areas:
+            "a a a a"
+            "b b b b"
+            "c c c c"
+            "d d d d";
+    }
+
+    .jumbotron>.titulo {
+        margin-top: 15px;
+        align-items: center;
+    }
+
+    .jumbotron>.titulo>h1 {
+        margin-top: 15px;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .jumbotron>.p1,
+    .p2 {
+        margin: 15px 20px 25px 20px;
+    }
+
+    .jumbotron>img {
+        margin-bottom: 15px;
+    }
+}

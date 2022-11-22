@@ -1,3 +1,8 @@
+import { useRef } from "react";
+
+import { addDoc, collection } from "firebase/firestore";
+import { dbContacto } from "../../../Config/firestore";
+import Swal from "sweetalert2";
 import { useFormik } from "formik";
 import "./formulario-contacto.css";
 
@@ -31,7 +36,8 @@ const validate = (values) => {
 };
 
 const FormularioContacto = () => {
-  // handleSubmit y handleChange son funciones nativas de formika, y values es una variable de estado de formika
+  const formRef = useRef();
+  // handleSubmit y handleChange son funciones nativas de formika
   // handleChange modifica el objeto y hadleSubmit manipula el objeto
   const formik = useFormik({
     initialValues: {
@@ -41,16 +47,27 @@ const FormularioContacto = () => {
       contactReason: "",
     },
     validate,
-    // mas adelante se usa un await con firebase
-    onSubmit: async function (values) {
+    onSubmit: async (values) => {
       console.log(values);
-      alert("Su mensaje ha sido enviado, lo contactaremos a la brevedad")
-      document.getElementById("frm").reset();
+      try {
+        await addDoc(collection(dbContacto, "Contactos"), values);
+        console.log("Documento creado");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Su mensaje ha sido enviado, lo contactaremos a la brevedad",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        formRef.current.reset();
+      } catch (e) {
+        console.error(e);
+      }
     },
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} id="frm">
+    <form ref={formRef} onSubmit={formik.handleSubmit} id="frm">
       <label htmlFor="name">Nombre</label>
       <input
         id="name"

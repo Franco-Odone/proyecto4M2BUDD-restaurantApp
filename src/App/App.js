@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 
-import { Header } from "./components/Header";
-import { Home } from "./components/Home";
-import { Menu } from "./views/Menú/Menu";
-import { Reservas } from "./views/Reservas/Reservas";
-import { Contacto } from "./views/Contácto/Contacto";
-import { Footer } from "./components/Footer";
-import "./style/style.css";
+import { Header } from "../components/Header/Header";
+import { Home } from "../views/Home/Home";
+import { Menu } from "../views/Menú/Menu";
+import { Reservas } from "../views/Reservas/Reservas";
+import { Contacto } from "../views/Contácto/Contacto";
+import { Footer } from "../components/Footer/Footer";
+import "./app.css";
 
 function App() {
   return (
