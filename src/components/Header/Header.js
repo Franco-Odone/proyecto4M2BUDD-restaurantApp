@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { MdRestaurant } from "react-icons/md";
@@ -6,10 +6,10 @@ import { MdRestaurant } from "react-icons/md";
 import "./header.css";
 
 const Header = () => {
-  const navRef = useRef();
+  const [mostrarNavMobile, setMostrarNavMobile] = useState(false);
 
   const mostrarNavBar = () => {
-    navRef.current.classList.toggle("responsive_nav");
+    setMostrarNavMobile(!mostrarNavMobile);
   };
 
   return (
@@ -19,7 +19,7 @@ const Header = () => {
           Restaurante Italiano <MdRestaurant />
         </Link>
       </h2>
-      <nav ref={navRef}>
+      <nav className={mostrarNavMobile ? "responsive_nav" : null}>
         <Link to={"/"} onClick={mostrarNavBar}>
           Home
         </Link>

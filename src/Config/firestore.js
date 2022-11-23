@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 // If you don't pass an app instance to the function then it sets the app variable to app.getApp()
-const dbContacto = getFirestore(
+const db = getFirestore(
   initializeApp({
     apiKey: "AIzaSyAuNView7moJgNUxs9kZFjRWJZlD1Pbw_k",
     authDomain: "restaurant-app-budd.firebaseapp.com",
@@ -13,4 +13,4 @@ const dbContacto = getFirestore(
   })
 );
 
-export { dbContacto };
+export { db };

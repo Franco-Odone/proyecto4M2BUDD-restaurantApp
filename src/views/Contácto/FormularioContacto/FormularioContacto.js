@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import { addDoc, collection } from "firebase/firestore";
-import { dbContacto } from "../../../Config/firestore";
+import { db } from "../../../Config/firestore";
 import Swal from "sweetalert2";
 import { useFormik } from "formik";
 import "./formulario-contacto.css";
@@ -10,14 +10,10 @@ const validate = (values) => {
   const errors = {};
   if (!values.name) {
     errors.name = "Campo requerido";
-  } else if (values.name.length > 15) {
-    errors.name = "Máximo 15 caracteres";
   }
 
   if (!values.surname) {
     errors.surname = "Campo requerido";
-  } else if (values.surname.length > 20) {
-    errors.surname = "Máximo 20 caracteres";
   }
 
   if (!values.email) {
@@ -28,15 +24,34 @@ const validate = (values) => {
 
   if (!values.contactReason) {
     errors.contactReason = "Campo requerido";
-  } else if (values.contactReason.length > 30) {
-    errors.contactReason = "Máximo 30 caracteres";
   }
 
   return errors;
 };
 
 const FormularioContacto = () => {
-  const formRef = useRef();
+  const formRef = useRef(),
+    buttonRef = useRef();
+
+  const onSubmit = async (values) => {
+    console.log(values);
+    try {
+      await addDoc(collection(db, "Contactos"), values);
+      console.log("Documento creado");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `Estimado/a ${values.name}, su mensaje ha sido enviado con éxito, lo contactaremos a la brevedad`,
+        showConfirmButton: true,
+        timer: 4000,
+      });
+      formRef.current.reset();
+      buttonRef.current.disabled = "true";
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   // handleSubmit y handleChange son funciones nativas de formika
   // handleChange modifica el objeto y hadleSubmit manipula el objeto
   const formik = useFormik({
@@ -47,35 +62,24 @@ const FormularioContacto = () => {
       contactReason: "",
     },
     validate,
-    onSubmit: async (values) => {
-      console.log(values);
-      try {
-        await addDoc(collection(dbContacto, "Contactos"), values);
-        console.log("Documento creado");
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Su mensaje ha sido enviado, lo contactaremos a la brevedad",
-          showConfirmButton: false,
-          timer: 3000,
-        });
-        formRef.current.reset();
-      } catch (e) {
-        console.error(e);
-      }
-    },
+    onSubmit: onSubmit,
   });
 
   return (
-    <form ref={formRef} onSubmit={formik.handleSubmit} id="frm">
+    <form ref={formRef} onSubmit={formik.handleSubmit}>
       <label htmlFor="name">Nombre</label>
       <input
         id="name"
         name="name"
         type="text"
         onChange={formik.handleChange}
+        // onBlur es un evento que sucede cuando se quita el foco de un elemento
+        onBlur={formik.handleBlur}
       ></input>
-      {formik.errors.name ? <div>{formik.errors.name}</div> : null}
+      {/* The “touched” property in Formik is a way to determine if a field has been used (or touched) by the user */}
+      {formik.touched.name && formik.errors.name ? (
+        <div className="val">{formik.errors.name}</div>
+      ) : null}
 
       <label htmlFor="surname">Apellido</label>
       <input
@@ -83,8 +87,11 @@ const FormularioContacto = () => {
         name="surname"
         type="text"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
       ></input>
-      {formik.errors.surname ? <div>{formik.errors.surname}</div> : null}
+      {formik.touched.surname && formik.errors.surname ? (
+        <div className="val">{formik.errors.surname}</div>
+      ) : null}
 
       <label htmlFor="email">Correo</label>
       <input
@@ -92,20 +99,31 @@ const FormularioContacto = () => {
         name="email"
         type="email"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
       ></input>
-      {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+      {formik.touched.email && formik.errors.email ? (
+        <div className="val">{formik.errors.email}</div>
+      ) : null}
 
       <label htmlFor="contactReason">Motivo</label>
       <textarea
         id="contactReason"
         name="contactReason"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
       ></textarea>
-      {formik.errors.contactReason ? (
-        <div>{formik.errors.contactReason}</div>
+      {formik.touched.contactReason && formik.errors.contactReason ? (
+        <div className="val">{formik.errors.contactReason}</div>
       ) : null}
 
-      <button type="submit">Enviar</button>
+      <button
+        type="submit"
+        ref={buttonRef}
+        // esValid es una propiedad cuyo valor es true si el objeto error está vacío
+        disabled={!formik.isValid}
+      >
+        Enviar
+      </button>
     </form>
   );
 };
