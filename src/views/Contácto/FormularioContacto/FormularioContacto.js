@@ -67,63 +67,73 @@ const FormularioContacto = () => {
 
   return (
     <form ref={formRef} onSubmit={formik.handleSubmit}>
-      <label htmlFor="name">Nombre</label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        onChange={formik.handleChange}
-        // onBlur es un evento que sucede cuando se quita el foco de un elemento
-        onBlur={formik.handleBlur}
-      ></input>
-      {/* The “touched” property in Formik is a way to determine if a field has been used (or touched) by the user */}
-      {formik.touched.name && formik.errors.name ? (
-        <div className="val">{formik.errors.name}</div>
-      ) : null}
+      <div>
+        <label htmlFor="name">Nombre</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          onChange={formik.handleChange}
+          // onBlur es un evento que sucede cuando se quita el foco de un elemento
+          onBlur={formik.handleBlur}
+        ></input>
+        {/* The “touched” property in Formik is a way to determine if a field has been used (or touched) by the user */}
+        {formik.touched.name && formik.errors.name ? (
+          <div className="val">{formik.errors.name}</div>
+        ) : null}
+      </div>
 
-      <label htmlFor="surname">Apellido</label>
-      <input
-        id="surname"
-        name="surname"
-        type="text"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      ></input>
-      {formik.touched.surname && formik.errors.surname ? (
-        <div className="val">{formik.errors.surname}</div>
-      ) : null}
+      <div>
+        <label htmlFor="surname">Apellido</label>
+        <input
+          id="surname"
+          name="surname"
+          type="text"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        ></input>
+        {formik.touched.surname && formik.errors.surname ? (
+          <div className="val">{formik.errors.surname}</div>
+        ) : null}
+      </div>
 
-      <label htmlFor="email">Correo</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      ></input>
-      {formik.touched.email && formik.errors.email ? (
-        <div className="val">{formik.errors.email}</div>
-      ) : null}
+      <div>
+        <label htmlFor="email">Correo</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        ></input>
+        {formik.touched.email && formik.errors.email ? (
+          <div className="val">{formik.errors.email}</div>
+        ) : null}
+      </div>
 
-      <label htmlFor="contactReason">Motivo</label>
-      <textarea
-        id="contactReason"
-        name="contactReason"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-      ></textarea>
-      {formik.touched.contactReason && formik.errors.contactReason ? (
-        <div className="val">{formik.errors.contactReason}</div>
-      ) : null}
+      <div>
+        <label htmlFor="contactReason">Motivo</label>
+        <textarea
+          id="contactReason"
+          name="contactReason"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        ></textarea>
+        {formik.touched.contactReason && formik.errors.contactReason ? (
+          <div className="val">{formik.errors.contactReason}</div>
+        ) : null}
+      </div>
 
-      <button
-        type="submit"
-        ref={buttonRef}
-        // esValid es una propiedad cuyo valor es true si el objeto error está vacío
-        disabled={!formik.isValid}
-      >
-        Enviar
-      </button>
+      <div>
+        <button
+          type="submit"
+          ref={buttonRef}
+          // esValid es una propiedad cuyo valor es true si el objeto error está vacío
+          disabled={!formik.isValid}
+        >
+          Enviar
+        </button>
+      </div>
     </form>
   );
 };

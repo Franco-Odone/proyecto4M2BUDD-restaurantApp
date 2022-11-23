@@ -8,15 +8,17 @@ import { Contacto } from "../views/Contácto/Contacto";
 import { Footer } from "../components/Footer/Footer";
 import "./app.css";
 
+const routes = ["/", "/menu", "/reservas", "/contacto"];
+
 function App() {
   return (
     <div className="app">
-      <Header />
+      <Header routes={routes} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/reservas" element={<Reservas />} />
-        <Route path="/contacto" element={<Contacto />} />
+        <Route path={routes[0]} element={<Home />} />
+        <Route path={routes[1]} element={<Menu />} />
+        <Route path={routes[2]} element={<Reservas />} />
+        <Route path={routes[3]} element={<Contacto />} />
       </Routes>
       <Footer />
     </div>

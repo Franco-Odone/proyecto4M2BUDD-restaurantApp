@@ -1,56 +1,32 @@
-.container{
-    width: 100%;
-    max-width: 500px;
-    padding: 30px 30px;
-    background: var(--white);
-    border-radius: 20px;
-    box-shadow: 0 4px 4px rgba(0,0,0,0.2);
-    overflow: hidden;
-    display: none;
+:root {
+    --mainColor: #29335c;
+    --mainColorLight: #5767aa;
+    --secondaryColor: #db2b39;
+    --textColor: #eee;
 }
-.container .content .text{
-    font-size: 1.4em;
-    font-weight: 500;
+
+.form {
+    width: 300px;
+    padding: 16px;
+    border: 2px solid var(--mainColor);
+    border-radius: 10px;
+    margin: auto;
+    background-color: var(--mainColorLight);
 }
-.container .content .form2{
-    margin-top: 30px;
-    /* background: #dddddd; */
-    padding: 30px;
-    border-radius: 5px;
-    border: 1px solid var(--grey);
-    /* padding-left: 20px; */
+
+.form>.inputDiv {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
-.container .content .form2 .txt{
-    font-size: 1.1em;
-    margin: 10px 0;
-    font-weight: 500;
+
+.form>.inputDiv>button {
+    margin-top: 15px;
 }
-.container .content .form2 form input{
-    width: 100%;
-    /* height: 50px; */
-    margin: 10px 0;
-    padding: 20px 40px;
-    box-sizing: border-box;
-    outline: none;
-    border: 1px solid var(--grey);
-    border-radius: 5px;
-}
-.container .content .form2 form .book{
-    margin: 10px 0 0;
-}
-.container .content .form2 form .book button{
-    background: var(--bg);
-    color: var(--white);
-    font-weight: 500;
-    border: none;
-    font-size: 1em;
-    padding: 15px 40px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.container.show{
+
+.form .label {
+    width: 72px;
+    font-weight: bold;
+    margin: 5px;
     display: block;
-}
-.container.hide{
-    display: none;
 }

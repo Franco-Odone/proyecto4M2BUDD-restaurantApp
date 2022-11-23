@@ -5,7 +5,7 @@ import { MdRestaurant } from "react-icons/md";
 
 import "./header.css";
 
-const Header = () => {
+const Header = (props) => {
   const [mostrarNavMobile, setMostrarNavMobile] = useState(false);
 
   const mostrarNavBar = () => {
@@ -15,21 +15,21 @@ const Header = () => {
   return (
     <header>
       <h2>
-        <Link to={"/"} className="restaurant">
+        <Link to={props.routes[0]} className="restaurant">
           Restaurante Italiano <MdRestaurant />
         </Link>
       </h2>
       <nav className={mostrarNavMobile ? "responsive_nav" : null}>
-        <Link to={"/"} onClick={mostrarNavBar}>
+        <Link to={props.routes[0]} onClick={mostrarNavBar}>
           Home
         </Link>
-        <Link to={"/menu"} onClick={mostrarNavBar}>
+        <Link to={props.routes[1]} onClick={mostrarNavBar}>
           Menú
         </Link>
-        <Link to={"/reservas"} onClick={mostrarNavBar}>
+        <Link to={props.routes[2]} onClick={mostrarNavBar}>
           Reservas
         </Link>
-        <Link to={"/contacto"} onClick={mostrarNavBar}>
+        <Link to={props.routes[3]} onClick={mostrarNavBar}>
           Contácto
         </Link>
         <button className="nav-btn nav-close-btn" onClick={mostrarNavBar}>

@@ -37,19 +37,22 @@ form input[type="email"] {
   display: inline-block;
 }
 
-form input[type="submit"] {
+form button[type="submit"] {
   width: 100%;
   padding: 8px 16px;
   margin-top: 32px;
-  border: 1px solid var(--mainColor);
+  border: 2px solid var(--mainColor);
   border-radius: 5px;
   display: block;
-  color: var(--mainColor);
+  color: var(--mainColorLight);
   background-color: var(--mainColor);
+  transition: all 0.5s;
 }
 
-form input[type="submit"]:hover {
+form button[type="submit"]:hover {
   cursor: pointer;
+  color: var(--mainColor);
+  background-color: #29659c;
 }
 
 textarea {
