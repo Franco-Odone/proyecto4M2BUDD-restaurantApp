@@ -78,87 +78,92 @@ const FormularioReservas = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} ref={formRef} className="form">
-      <div className="inputDiv">
-        <label className="label" htmlFor="name">
+    <form onSubmit={handleSubmit} ref={formRef} className="formReservas">
+      <div className="inputDivReservas">
+        <label className="labelReservas" htmlFor="name">
           Nombre
         </label>
         <input
           type={"text"}
           id="name"
           name="name"
-          className="input"
+          className="inputReservas"
           onChange={handleChange}
         />
       </div>
 
-      <div className="inputDiv">
-        <label className="label" htmlFor="surname">
+      <div className="inputDivReservas">
+        <label className="labelReservas" htmlFor="surname">
           Apellido
         </label>
         <input
           type={"text"}
           id="surname"
           name="surname"
-          className="input"
+          className="inputReservas"
           onChange={handleChange}
         />
       </div>
 
-      <div className="inputDiv">
-        <label className="label" htmlFor="attendees">
+      <div className="inputDivReservas">
+        <label className="labelReservas" htmlFor="attendees">
           Asistentes
         </label>
         <input
           type={"number"}
           id="attendees"
           name="attendees"
-          className="input"
+          className="inputReservas"
           onChange={handleChange}
         />
       </div>
 
-      <div className="inputDiv">
-        <label className="label" htmlFor="date">
+      <div className="inputDivReservas">
+        <label className="labelReservas" htmlFor="date">
           Fecha
         </label>
         <input
           type={"date"}
           id="date"
           name="date"
-          className="input"
+          className="inputReservas"
           onChange={handleChange}
         />
       </div>
 
-      <div className="inputDiv">
-        <label className="label" htmlFor="time">
+      <div className="inputDivReservas">
+        <label className="labelReservas" htmlFor="time">
           Hora
         </label>
         <input
           type={"time"}
           id="time"
           name="time"
-          className="input"
+          className="inputReservas"
           onChange={handleChange}
         />
       </div>
 
-      <div className="inputDiv">
-        <label className="label" htmlFor="cel">
+      <div className="inputDivReservas">
+        <label className="labelReservas" htmlFor="cel">
           Celular
         </label>
         <input
           type={"tel"}
           id="cel"
           name="cel"
-          className="input"
+          className="inputReservas"
           onChange={handleChange}
         />
       </div>
 
-      <div className="inputDivButton">
-        <button type="submit" ref={buttonRef} disabled>
+      <div className="inputDivButtonReservas">
+        <button
+          type="submit"
+          ref={buttonRef}
+          className="buttonReservas"
+          disabled
+        >
           Reservar
         </button>
       </div>

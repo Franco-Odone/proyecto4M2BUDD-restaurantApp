@@ -5,29 +5,28 @@
   --textColor: #eee;
 }
 
-form {
-  width: 300px;
+.formContactos {
+  width: 40%;
   padding: 16px;
-  border: 2px solid var(--mainColor);
+  border: 5px solid var(--mainColor);
   border-radius: 10px;
   margin: auto;
   background-color: var(--mainColorLight);
 }
 
-form label {
+.formContactos>.inputDivContactos {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.formContactos .labelContactos {
   width: 72px;
   font-weight: bold;
   display: inline-block;
 }
 
-.val {
-  color: var(--secondaryColor);
-  background-color: var(--mainColor);
-  margin-bottom: 5px;
-}
-
-form input[type="text"],
-form input[type="email"] {
+.formContactos .inputContactos {
   width: 100%;
   padding: 3px 10px;
   border: 1px solid var(--mainColor);
@@ -37,11 +36,11 @@ form input[type="email"] {
   display: inline-block;
 }
 
-form input[type="email"]:invalid {
+.formContactos .inputContactos:invalid {
   color: var(--secondaryColor);
 }
 
-/* form button[type="submit"] {
+/* .formContactos .buttonContactos[type="submit"] {
   width: 100%;
   padding: 8px 16px;
   margin-top: 32px;
@@ -53,13 +52,13 @@ form input[type="email"]:invalid {
   transition: all 0.5s;
 }
 
-form button[type="submit"]:hover {
+.formContactos .buttonContactos[type="submit"]:hover {
   cursor: pointer;
   color: var(--mainColor);
   background-color: #29659c;
 } */
 
-textarea {
+.textAreaContactos {
   width: 100%;
   height: 100px;
   border: 1px solid var(--mainColor);
@@ -69,4 +68,10 @@ textarea {
   padding: 8px;
   resize: none;
   display: block;
+}
+
+@media only screen and (max-width: 1024px) {
+  .formContactos {
+    width: 80%;
+  }
 }

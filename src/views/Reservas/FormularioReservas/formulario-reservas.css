@@ -5,28 +5,44 @@
     --textColor: #eee;
 }
 
-.form {
-    width: 300px;
+.formReservas {
+    width: 40%;
     padding: 16px;
-    border: 2px solid var(--mainColor);
+    border: 5px solid var(--mainColor);
     border-radius: 10px;
     margin: auto;
     background-color: var(--mainColorLight);
 }
 
-.form>.inputDiv {
+.formReservas>.inputDivReservas {
     display: flex;
     flex-direction: column;
     text-align: left;
 }
 
-.form>.inputDivButton{
-    margin-top: 10px;
+.formReservas .inputReservas {
+    width: 100%;
+    padding: 3px 10px;
+    border: 1px solid var(--mainColor);
+    border-radius: 3px;
+    background-color: var(--textColor);
+    margin: 8px 0;
+    display: inline-block;
 }
 
-.form .label {
+.formReservas .inputReservas:invalid {
+    color: var(--secondaryColor);
+}
+
+.formReservas .labelReservas {
     width: 72px;
     font-weight: bold;
     margin: 5px;
     display: block;
+}
+
+@media only screen and (max-width: 1024px) {
+    .formReservas {
+        width: 80%;
+    }
 }

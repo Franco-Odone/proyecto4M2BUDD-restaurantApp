@@ -1,6 +1,55 @@
+:root {
+  --mainColor: #29335c;
+  --mainColorLight: #5767aa;
+  --secondaryColor: #db2b39;
+  --textColor: #eee;
+}
+
 .contacto {
   flex: 1;
+  padding: 20px;
   min-width: fit-content;
-  margin: 10px;
   text-align: center;
+  background-image: url("../../img/46396.jpg");
+  background-size: cover;
+}
+
+.contacto .divContacto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contacto .divContacto .h2Contacto {
+  display: inline;
+  background-color: var(--textColor);
+  border-radius: 15px;
+  border: 5px solid var(--mainColor);
+  color: var(--mainColor);
+  font-size: 3rem;
+  padding: 0 5px;
+
+}
+
+.contacto .pContacto {
+  display: inline;
+  background-color: var(--textColor);
+  border-radius: 15px;
+  border: 5px solid var(--mainColor);
+  color: var(--mainColor);
+  padding: 0 5px;
+  margin: 15px 0;
+}
+
+@media only screen and (max-width: 1024px) {
+  .contacto {
+    background-size: contain;
+
+  }
+
+  .contacto>.divContacto>.h2Contacto {
+    margin-top: 15px;
+    font-size: 1.7rem;
+    text-align: center;
+  }
 }

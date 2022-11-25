@@ -70,48 +70,69 @@ const FormularioContacto = () => {
   }, [formik.values]);
 
   return (
-    <form ref={formRef} onSubmit={formik.handleSubmit}>
-      <div>
-        <label htmlFor="name">Nombre</label>
+    <form
+      ref={formRef}
+      onSubmit={formik.handleSubmit}
+      className="formContactos"
+    >
+      <div className="inputDivContactos">
+        <label htmlFor="name" className="labelContactos">
+          Nombre
+        </label>
         <input
           id="name"
           name="name"
           type="text"
+          className="inputContactos"
           onChange={formik.handleChange}
         ></input>
       </div>
 
-      <div>
-        <label htmlFor="surname">Apellido</label>
+      <div className="inputDivContactos">
+        <label htmlFor="surname" className="labelContactos">
+          Apellido
+        </label>
         <input
           id="surname"
           name="surname"
           type="text"
+          className="inputContactos"
           onChange={formik.handleChange}
         ></input>
       </div>
 
-      <div>
-        <label htmlFor="email">Correo</label>
+      <div className="inputDivContactos">
+        <label htmlFor="email" className="labelContactos">
+          Correo
+        </label>
         <input
           id="email"
           name="email"
           type="email"
+          className="inputContactos"
           onChange={formik.handleChange}
         ></input>
       </div>
 
-      <div>
-        <label htmlFor="contactReason">Motivo</label>
+      <div className="inputDivContactos">
+        <label htmlFor="contactReason" className="labelContactos">
+          Motivo
+        </label>
         <textarea
           id="contactReason"
           name="contactReason"
+          className="textAreaContactos"
           onChange={formik.handleChange}
         ></textarea>
       </div>
 
-      <div>
-        <button type="submit" ref={buttonRef} disabled>
+      <div className="inputDivButtonReservas">
+        <button
+          type="submit"
+          ref={buttonRef}
+          className="buttonContactos"
+          disabled
+        >
           Enviar
         </button>
       </div>
