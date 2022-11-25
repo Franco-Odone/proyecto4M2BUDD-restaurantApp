@@ -40,3 +40,14 @@
   padding: 0 5px;
   margin: 3rem 1rem;
 }
+
+@media only screen and (max-width: 1024px) {
+  .contenedor-menu {
+    display: grid;
+    grid-template-columns: 2fr;
+  }
+  .pizzas,
+  .platos-calientes {
+    margin: 1rem 1rem;
+  }
+}
