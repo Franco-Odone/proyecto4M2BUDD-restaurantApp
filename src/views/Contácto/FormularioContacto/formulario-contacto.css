@@ -28,7 +28,7 @@ form label {
 
 form input[type="text"],
 form input[type="email"] {
-  width: 180px;
+  width: 100%;
   padding: 3px 10px;
   border: 1px solid var(--mainColor);
   border-radius: 3px;
@@ -37,7 +37,11 @@ form input[type="email"] {
   display: inline-block;
 }
 
-form button[type="submit"] {
+form input[type="email"]:invalid {
+  color: var(--secondaryColor);
+}
+
+/* form button[type="submit"] {
   width: 100%;
   padding: 8px 16px;
   margin-top: 32px;
@@ -53,7 +57,7 @@ form button[type="submit"]:hover {
   cursor: pointer;
   color: var(--mainColor);
   background-color: #29659c;
-}
+} */
 
 textarea {
   width: 100%;

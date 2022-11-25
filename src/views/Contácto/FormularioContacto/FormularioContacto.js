@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../Config/firestore";
@@ -9,21 +9,19 @@ import "./formulario-contacto.css";
 const validate = (values) => {
   const errors = {};
   if (!values.name) {
-    errors.name = "Campo requerido";
+    errors.name = true;
   }
 
   if (!values.surname) {
-    errors.surname = "Campo requerido";
+    errors.surname = true;
   }
 
   if (!values.email) {
-    errors.email = "Campo requerido";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Email inválido";
+    errors.email = true;
   }
 
   if (!values.contactReason) {
-    errors.contactReason = "Campo requerido";
+    errors.contactReason = true;
   }
 
   return errors;
@@ -33,7 +31,7 @@ const FormularioContacto = () => {
   const formRef = useRef(),
     buttonRef = useRef();
 
-  const onSubmit = async (values) => {
+  const handleSubmit = async (values) => {
     console.log(values);
     try {
       await addDoc(collection(db, "Contactos"), values);
@@ -46,13 +44,11 @@ const FormularioContacto = () => {
         timer: 4000,
       });
       formRef.current.reset();
-      buttonRef.current.disabled = "true";
+      buttonRef.current.setAttribute("disabled", "disabled");
     } catch (e) {
       console.error(e);
     }
   };
-
-  // handleSubmit y handleChange son funciones nativas de formika
   // handleChange modifica el objeto y hadleSubmit manipula el objeto
   const formik = useFormik({
     initialValues: {
@@ -61,9 +57,17 @@ const FormularioContacto = () => {
       email: "",
       contactReason: "",
     },
-    validate,
-    onSubmit: onSubmit,
+    onSubmit: handleSubmit,
   });
+
+  useEffect(() => {
+    let validation = validate(formik.values);
+    if (Object.keys(validation).length === 0) {
+      buttonRef.current.removeAttribute("disabled");
+    } else if (Object.keys(validation).length !== 0) {
+      buttonRef.current.setAttribute("disabled", "disabled");
+    }
+  }, [formik.values]);
 
   return (
     <form ref={formRef} onSubmit={formik.handleSubmit}>
@@ -74,13 +78,7 @@ const FormularioContacto = () => {
           name="name"
           type="text"
           onChange={formik.handleChange}
-          // onBlur es un evento que sucede cuando se quita el foco de un elemento
-          onBlur={formik.handleBlur}
         ></input>
-        {/* The “touched” property in Formik is a way to determine if a field has been used (or touched) by the user */}
-        {formik.touched.name && formik.errors.name ? (
-          <div className="val">{formik.errors.name}</div>
-        ) : null}
       </div>
 
       <div>
@@ -90,11 +88,7 @@ const FormularioContacto = () => {
           name="surname"
           type="text"
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
         ></input>
-        {formik.touched.surname && formik.errors.surname ? (
-          <div className="val">{formik.errors.surname}</div>
-        ) : null}
       </div>
 
       <div>
@@ -104,11 +98,7 @@ const FormularioContacto = () => {
           name="email"
           type="email"
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
         ></input>
-        {formik.touched.email && formik.errors.email ? (
-          <div className="val">{formik.errors.email}</div>
-        ) : null}
       </div>
 
       <div>
@@ -117,20 +107,11 @@ const FormularioContacto = () => {
           id="contactReason"
           name="contactReason"
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
         ></textarea>
-        {formik.touched.contactReason && formik.errors.contactReason ? (
-          <div className="val">{formik.errors.contactReason}</div>
-        ) : null}
       </div>
 
       <div>
-        <button
-          type="submit"
-          ref={buttonRef}
-          // esValid es una propiedad cuyo valor es true si el objeto error está vacío
-          disabled={!formik.isValid}
-        >
+        <button type="submit" ref={buttonRef} disabled>
           Enviar
         </button>
       </div>

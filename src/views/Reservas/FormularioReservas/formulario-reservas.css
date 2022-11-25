@@ -20,8 +20,8 @@
     text-align: left;
 }
 
-.form>.inputDiv>button {
-    margin-top: 15px;
+.form>.inputDivButton{
+    margin-top: 10px;
 }
 
 .form .label {

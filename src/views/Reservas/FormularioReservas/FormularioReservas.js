@@ -8,27 +8,27 @@ import "./formulario-reservas.css";
 const validate = (values) => {
   const errors = {};
   if (!values.name) {
-    errors.name = "Campo requerido";
+    errors.name = true;
   }
 
   if (!values.surname) {
-    errors.surname = "Campo requerido";
+    errors.surname = true;
   }
 
   if (!values.attendees) {
-    errors.attendees = "Campo requerido";
+    errors.attendees = true;
   }
 
   if (!values.date) {
-    errors.date = "Campo requerido";
+    errors.date = true;
   }
 
   if (!values.time) {
-    errors.time = "Campo requerido";
+    errors.time = true;
   }
 
   if (!values.cel) {
-    errors.cel = "Campo requerido";
+    errors.cel = true;
   }
 
   return errors;
@@ -40,10 +40,12 @@ const FormularioReservas = () => {
   const [fireStoreData, setFireStoreData] = useState({});
 
   useEffect(() => {
-    let validación = validate(fireStoreData);
-    Object.keys(validación);
-    // console.log(validación);
-    // console.log(Object.keys(validación).length === 6);1
+    let validation = validate(fireStoreData);
+    if (Object.keys(validation).length === 0) {
+      buttonRef.current.removeAttribute("disabled");
+    } else if (Object.keys(validation).length !== 0) {
+      buttonRef.current.setAttribute("disabled", "disabled");
+    }
   }, [fireStoreData]);
 
   const handleSubmit = async (e) => {
@@ -51,7 +53,7 @@ const FormularioReservas = () => {
       e.preventDefault();
       console.log(fireStoreData);
       await addDoc(collection(db, "Reservas"), fireStoreData);
-      console.log("Documento creado");
+      console.log("Reserva creada");
       Swal.fire({
         position: "center",
         icon: "success",
@@ -60,14 +62,13 @@ const FormularioReservas = () => {
         timer: 4000,
       });
       formRef.current.reset();
-      buttonRef.current.disabled = "true";
+      buttonRef.current.setAttribute("disabled", "disabled");
     } catch (e) {
       console.error(e);
     }
   };
 
   const handleChange = (e) => {
-    // console.log(e);
     setFireStoreData((prevFireStoreData) => {
       return {
         ...prevFireStoreData,
@@ -79,7 +80,9 @@ const FormularioReservas = () => {
   return (
     <form onSubmit={handleSubmit} ref={formRef} className="form">
       <div className="inputDiv">
-        <label className="label">Nombre</label>
+        <label className="label" htmlFor="name">
+          Nombre
+        </label>
         <input
           type={"text"}
           id="name"
@@ -90,7 +93,9 @@ const FormularioReservas = () => {
       </div>
 
       <div className="inputDiv">
-        <label className="label">Apellido</label>
+        <label className="label" htmlFor="surname">
+          Apellido
+        </label>
         <input
           type={"text"}
           id="surname"
@@ -101,7 +106,9 @@ const FormularioReservas = () => {
       </div>
 
       <div className="inputDiv">
-        <label className="label">Asistentes</label>
+        <label className="label" htmlFor="attendees">
+          Asistentes
+        </label>
         <input
           type={"number"}
           id="attendees"
@@ -112,7 +119,9 @@ const FormularioReservas = () => {
       </div>
 
       <div className="inputDiv">
-        <label className="label">Fecha</label>
+        <label className="label" htmlFor="date">
+          Fecha
+        </label>
         <input
           type={"date"}
           id="date"
@@ -123,7 +132,9 @@ const FormularioReservas = () => {
       </div>
 
       <div className="inputDiv">
-        <label className="label">Hora</label>
+        <label className="label" htmlFor="time">
+          Hora
+        </label>
         <input
           type={"time"}
           id="time"
@@ -134,7 +145,9 @@ const FormularioReservas = () => {
       </div>
 
       <div className="inputDiv">
-        <label className="label">Celular</label>
+        <label className="label" htmlFor="cel">
+          Celular
+        </label>
         <input
           type={"tel"}
           id="cel"
@@ -144,8 +157,8 @@ const FormularioReservas = () => {
         />
       </div>
 
-      <div className="inputDiv">
-        <button type="submit" ref={buttonRef}>
+      <div className="inputDivButton">
+        <button type="submit" ref={buttonRef} disabled>
           Reservar
         </button>
       </div>
