@@ -46,29 +46,23 @@
 
 .jumbotron>.p1 {
     grid-area: b;
-    background-color: var(--textColor);
-    border-radius: 15px;
-    border: 5px solid var(--mainColor);
-    color: var(--mainColor);
-    padding: 0 5px;
 }
 
 .jumbotron>.p2 {
     grid-area: c;
+}
+
+.jumbotron>.p1,
+.jumbotron>.p2 {
+    font-size: 1.4rem;
+    margin: 0 15px;
+    text-align: justify;
+    align-self: flex-start;
     background-color: var(--textColor);
     border-radius: 15px;
     border: 5px solid var(--mainColor);
     color: var(--mainColor);
     padding: 0 5px;
-}
-
-.jumbotron>.p1,
-.p2 {
-    color: var(--mainColorLight);
-    font-size: 1.4rem;
-    margin: 0 15px;
-    text-align: justify;
-    align-self: flex-start;
 }
 
 .jumbotron>img {
@@ -84,7 +78,7 @@
 @media only screen and (max-width: 1024px) {
     .home {
         background-size: contain;
-    
+
     }
 
     .jumbotron {
@@ -109,8 +103,9 @@
     }
 
     .jumbotron>.p1,
-    .p2 {
+    .jumbotron>.p2 {
         margin: 15px 20px 25px 20px;
+        text-align: center;
     }
 
     .jumbotron>img {

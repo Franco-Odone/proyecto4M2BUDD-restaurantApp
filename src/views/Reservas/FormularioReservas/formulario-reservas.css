@@ -20,6 +20,12 @@
     text-align: left;
 }
 
+.formReservas .labelReservas {
+    width: 72px;
+    font-weight: bold;
+    display: inline-block;
+}
+
 .formReservas .inputReservas {
     width: 100%;
     padding: 3px 10px;
@@ -32,13 +38,6 @@
 
 .formReservas .inputReservas:invalid {
     color: var(--secondaryColor);
-}
-
-.formReservas .labelReservas {
-    width: 72px;
-    font-weight: bold;
-    margin: 5px;
-    display: block;
 }
 
 @media only screen and (max-width: 1024px) {
