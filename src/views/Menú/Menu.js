@@ -30,6 +30,7 @@ const Menu = () => {
             </p>
           </div>
         </div>
+
         <div className="pizzas">
           <h1>Pizzas</h1>
           <div>
