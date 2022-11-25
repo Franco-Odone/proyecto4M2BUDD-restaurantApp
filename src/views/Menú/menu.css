@@ -1,14 +1,18 @@
 :root {
-	--mainColor: #29335c;
-	--mainColorLight: #5767aa;
-	--secondaryColor: #db2b39;
-	--textColor: #eee;
+  --mainColor: #29335c;
+  --mainColorLight: #5767aa;
+  --secondaryColor: #db2b39;
+  --textColor: #eee;
 }
 
-
 .menu {
-	flex: 1;
-	min-width: fit-content;
-	margin: 10px;
-	text-align: center;
+  flex: 1;
+  min-width: fit-content;
+  margin: 10px;
+  text-align: center;
+}
+
+.contenedor-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
