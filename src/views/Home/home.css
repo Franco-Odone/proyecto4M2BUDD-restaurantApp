@@ -5,8 +5,6 @@
     --textColor: #eee;
 }
 
-/* Main */
-
 .home {
     flex: 1;
     min-width: fit-content;
