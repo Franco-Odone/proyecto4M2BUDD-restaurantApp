@@ -31,14 +31,16 @@
 }
 
 .pizzas,
-.platos-calientes {
+.platos-calientes,
+.postres,
+.para-tomar {
   display: inline;
   background-color: var(--textColor);
   border-radius: 15px;
   border: 5px solid var(--mainColor);
   color: var(--mainColor);
   padding: 0 5px;
-  margin: 3rem 1rem;
+  margin: 1rem 1rem;
 }
 
 @media only screen and (max-width: 1024px) {

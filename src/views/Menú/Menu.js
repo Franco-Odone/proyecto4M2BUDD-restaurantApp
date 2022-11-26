@@ -55,6 +55,44 @@ const Menu = () => {
             <p>Salsa de tomate, mozzarella, albahaca y aceite de oliva.</p>
           </div>
         </div>
+        <div className="postres">
+          <h1>Postres</h1>
+          <div>
+            <h2>Gelato Mix</h2>
+            <span>$3.500</span>
+            <p>Mix de helados receta italiana.</p>
+          </div>
+          <div>
+            <h2>Cannoli</h2>
+            <span>$2.400</span>
+            <p>
+              Masa crujiente enrollada rellena de ricotta pastelera y fruta.
+            </p>
+          </div>
+          <div>
+            <h2>Tiramisú</h2>
+            <span>$3.500</span>
+          </div>
+        </div>
+        <div className="para-tomar">
+          <h1>Para tomar</h1>
+          <div>
+            <h2>Coca-Cola</h2>
+            <span>$1.500</span>
+          </div>
+          <div>
+            <h2>Jugo natural</h2>
+            <span>$2.500</span>
+          </div>
+          <div>
+            <h2>Shop Cerveza</h2>
+            <span>$2.900</span>
+          </div>
+          <div>
+            <h2>Copa Vino Italiano</h2>
+            <span>$4.000</span>
+          </div>
+        </div>
       </div>
     </div>
   );
