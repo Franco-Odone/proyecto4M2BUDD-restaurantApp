@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 
+import { useNavigate } from "react-router-dom";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../Config/firestore";
 import Swal from "sweetalert2";
@@ -28,14 +29,14 @@ const validate = (values) => {
 };
 
 const FormularioContacto = () => {
-  const formRef = useRef(),
-    buttonRef = useRef();
+  const buttonRef = useRef();
+  const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
-    console.log(values);
+    // console.log(values);
     try {
-      await addDoc(collection(db, "Contactos"), values);
-      console.log("Documento creado");
+      const docRef = await addDoc(collection(db, "Contactos"), values);
+      console.log("Documento creado con ID: ", docRef.id);
       Swal.fire({
         position: "center",
         icon: "success",
@@ -43,8 +44,7 @@ const FormularioContacto = () => {
         showConfirmButton: true,
         timer: 4000,
       });
-      formRef.current.reset();
-      buttonRef.current.setAttribute("disabled", "disabled");
+      navigate("/");
     } catch (e) {
       console.error(e);
     }
@@ -70,11 +70,7 @@ const FormularioContacto = () => {
   }, [formik.values]);
 
   return (
-    <form
-      ref={formRef}
-      onSubmit={formik.handleSubmit}
-      className="formContactos"
-    >
+    <form onSubmit={formik.handleSubmit} className="formContactos">
       <div className="inputDivContactos">
         <label htmlFor="name" className="labelContactos">
           Nombre

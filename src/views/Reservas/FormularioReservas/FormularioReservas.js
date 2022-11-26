@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
+import { useNavigate } from "react-router-dom";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../Config/firestore";
 import Swal from "sweetalert2";
@@ -35,8 +36,8 @@ const validate = (values) => {
 };
 
 const FormularioReservas = () => {
-  const formRef = useRef();
   const buttonRef = useRef();
+  const navigate = useNavigate();
   const [fireStoreData, setFireStoreData] = useState({});
 
   useEffect(() => {
@@ -51,9 +52,9 @@ const FormularioReservas = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      console.log(fireStoreData);
-      await addDoc(collection(db, "Reservas"), fireStoreData);
-      console.log("Reserva creada");
+      // console.log(fireStoreData);
+      const docRef = await addDoc(collection(db, "Reservas"), fireStoreData);
+      console.log("Reserva creada, el ID del documento es: ", docRef.id);
       Swal.fire({
         position: "center",
         icon: "success",
@@ -61,8 +62,7 @@ const FormularioReservas = () => {
         showConfirmButton: true,
         timer: 4000,
       });
-      formRef.current.reset();
-      buttonRef.current.setAttribute("disabled", "disabled");
+      navigate("/");
     } catch (e) {
       console.error(e);
     }
@@ -78,7 +78,7 @@ const FormularioReservas = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} ref={formRef} className="formReservas">
+    <form onSubmit={handleSubmit} className="formReservas">
       <div className="inputDivReservas">
         <label className="labelReservas" htmlFor="name">
           Nombre
