@@ -5,7 +5,9 @@ principales funcionalidades son la posibilidad de poder completar un formulario 
 
  Para poder probar diferentes formas de gestionar formularios en el de contácto se utilizó la biblioteca formik ya que esta provee funcionalidades interesantes de incorporar para hacer más expedito el trabajo, algunas de las cuales se usaron en este proyecto.   
 
-[Enlace al despliegue en Github Pages](https://franco-odone.github.io/proyecto4M2BUDD-restaurantApp/)
+[Enlace al despliegue en Netlify](https://restaurant-app-udd.netlify.app/)
+
+[Enlace al despliegue en Vercel](https://proyecto4-m2-budd-restaurant-app-franco-odone.vercel.app/)
 
 Aplicación desarrollada por:
 
